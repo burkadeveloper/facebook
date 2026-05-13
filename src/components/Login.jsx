@@ -35,28 +35,25 @@ const Login = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const res = await fetch(
-          "https://facebookbackend-fp4k.onrender.com/api/login",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              emailOrPhone: formData.email,
-              password: formData.password,
-            }),
-          },
-        );
-        const data = await res.json();
-        if (res.ok) {
+        const API_BASE = import.meta.env.VITE_API_BASE_URL;
+        const response = await fetch(`${API_BASE}/api/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            emailOrPhone: formData.email,
+            password: formData.password,
+          }),
+        });
+        const data = await response.json();
+        if (response.ok) {
           localStorage.setItem("userEmail", formData.email);
           navigate("/dashboard");
         } else {
           alert(`Error: ${data.error || "Login failed"}`);
         }
-      } catch {
-        alert(
-          "Cannot connect to server. Make sure backend is running on port 5000.",
-        );
+      } catch (err) {
+        console.error(err);
+        alert("Cannot connect to server. Check if backend is running.");
       }
     }
   };

@@ -10,6 +10,7 @@ import {
   Zap,
   Clock,
   Share2,
+  Edit3,
 } from "lucide-react";
 import "./Dashboard.css";
 
@@ -20,7 +21,12 @@ const Dashboard = () => {
   const [voted, setVoted] = useState(false);
   const [voteCount, setVoteCount] = useState(0);
   const [isVoting, setIsVoting] = useState(false);
+  const [newPhotoUrl, setNewPhotoUrl] = useState("");
+  const [updating, setUpdating] = useState(false);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
   const userEmail = localStorage.getItem("userEmail") || "demo@example.com";
+
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     fetchPerson();
@@ -28,9 +34,7 @@ const Dashboard = () => {
 
   const fetchPerson = async () => {
     try {
-      const res = await fetch(
-        "https://facebookbackend-fp4k.onrender.com/api/person",
-      );
+      const res = await fetch(`${API_BASE}/api/person`);
       const data = await res.json();
       setPerson(data);
       setVoteCount(data.voteCount);
@@ -45,17 +49,11 @@ const Dashboard = () => {
     if (voted || isVoting) return;
     setIsVoting(true);
     try {
-      const res = await fetch(
-        "https://facebookbackend-fp4k.onrender.com/api/vote",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            userEmail: userEmail,
-            personId: person._id,
-          }),
-        },
-      );
+      const res = await fetch(`${API_BASE}/api/vote`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userEmail, personId: person._id }),
+      });
       const data = await res.json();
       if (res.ok) {
         setVoteCount(data.voteCount);
@@ -79,6 +77,32 @@ const Dashboard = () => {
     navigate("/");
   };
 
+  const handleUpdatePhoto = async () => {
+    if (!newPhotoUrl.trim()) return;
+    setUpdating(true);
+    try {
+      const res = await fetch(`${API_BASE}/api/person/photo`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ photoUrl: newPhotoUrl }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setPerson((prev) => ({ ...prev, photoUrl: newPhotoUrl }));
+        setShowUpdateForm(false);
+        setNewPhotoUrl("");
+        alert("Profile photo updated!");
+      } else {
+        alert(data.error);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Update failed");
+    } finally {
+      setUpdating(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="dashboard-loader">
@@ -92,7 +116,6 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <div className="dashboard-grid">
-        {/* Left Column – Developer Profile */}
         <div className="profile-section">
           <div className="profile-card">
             <button className="logout-btn" onClick={handleLogout}>
@@ -126,10 +149,34 @@ const Dashboard = () => {
                 enthusiast. Building the future with React & Node.
               </p>
             </div>
+            <div className="photo-update-section">
+              {!showUpdateForm ? (
+                <button
+                  className="update-photo-btn"
+                  onClick={() => setShowUpdateForm(true)}
+                >
+                  <Edit3 size={16} /> Change Photo URL
+                </button>
+              ) : (
+                <div className="update-form">
+                  <input
+                    type="text"
+                    placeholder="Paste Cloudinary image URL"
+                    value={newPhotoUrl}
+                    onChange={(e) => setNewPhotoUrl(e.target.value)}
+                  />
+                  <button onClick={handleUpdatePhoto} disabled={updating}>
+                    {updating ? "Updating..." : "Save"}
+                  </button>
+                  <button onClick={() => setShowUpdateForm(false)}>
+                    Cancel
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Right Column – Vote Card + Competition Info */}
         <div className="vote-section">
           <div className="competition-card">
             <div className="comp-header">

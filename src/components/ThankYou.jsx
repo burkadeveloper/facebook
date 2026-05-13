@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { CheckCircle, Award, LogOut } from "lucide-react";
+import { CheckCircle, Award, Twitter, Linkedin, LogOut } from "lucide-react";
 import "./ThankYou.css";
 
 const ThankYou = () => {
@@ -34,7 +34,14 @@ const ThankYou = () => {
         </div>
         <div className="share-section">
           <p>Spread the word:</p>
-          <div className="social-buttons"></div>
+          <div className="social-buttons">
+            <button className="social-btn twitter">
+              <Twitter size={18} /> Tweet
+            </button>
+            <button className="social-btn linkedin">
+              <Linkedin size={18} /> Share
+            </button>
+          </div>
         </div>
         <button className="logout-thanks-btn" onClick={handleLogout}>
           <LogOut size={18} /> Log out
