@@ -1,15 +1,15 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { CheckCircle, Award, Twitter, Linkedin, LogOut } from "lucide-react";
-import "./ThankYou.css";
+import { useLocation, useNavigate } from 'react-router-dom';
+import { CheckCircle, Award, LogOut } from 'lucide-react';
+import './ThankYou.css';
 
 const ThankYou = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { personName } = location.state || { personName: "the developer" };
+  const { personName } = location.state || { personName: 'the developer' };
 
   const handleLogout = () => {
-    localStorage.removeItem("userEmail");
-    navigate("/");
+    localStorage.removeItem('userEmail');
+    navigate('/');
   };
 
   return (
@@ -26,27 +26,13 @@ const ThankYou = () => {
           <Award size={24} />
           <div>
             <h3>Developer Competition 2025</h3>
-            <p>
-              Your vote helps decide who will be crowned Developer of the Year.
-              The winner will be announced live on June 15th, 2025.
-            </p>
-          </div>
-        </div>
-        <div className="share-section">
-          <p>Spread the word:</p>
-          <div className="social-buttons">
-            <button className="social-btn twitter">
-              <Twitter size={18} /> Tweet
-            </button>
-            <button className="social-btn linkedin">
-              <Linkedin size={18} /> Share
-            </button>
+            <p>Your vote helps decide who will be crowned Developer of the Year. The winner will be announced live on June 15th, 2025.</p>
           </div>
         </div>
         <button className="logout-thanks-btn" onClick={handleLogout}>
           <LogOut size={18} /> Log out
         </button>
-        <button className="return-btn" onClick={() => navigate("/dashboard")}>
+        <button className="return-btn" onClick={() => navigate('/dashboard')}>
           Back to Dashboard
         </button>
       </div>
