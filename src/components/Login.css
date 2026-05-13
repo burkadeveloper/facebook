@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +5,7 @@
 }
 
 body {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue",
-    Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   background: #f0f2f5;
 }
 
@@ -30,7 +27,6 @@ body {
   gap: 40px;
 }
 
-/* Left side */
 .fb-meta-left {
   flex: 1;
   padding-right: 32px;
@@ -52,14 +48,11 @@ body {
   max-width: 500px;
 }
 
-/* Right side – login card */
 .fb-meta-right {
   flex: 0 0 396px;
   background: #fff;
   border-radius: 8px;
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
   padding: 20px 20px 28px;
 }
 
@@ -149,14 +142,12 @@ body {
   background: #36a420;
 }
 
-/* Footer */
 .fb-meta-footer {
   background: #fff;
   padding: 32px 16px;
 }
 
-.footer-lang,
-.footer-links {
+.footer-lang, .footer-links {
   max-width: 980px;
   margin: 0 auto;
   display: flex;
@@ -164,15 +155,13 @@ body {
   gap: 10px 20px;
 }
 
-.footer-lang a,
-.footer-links a {
+.footer-lang a, .footer-links a {
   color: #737373;
   text-decoration: none;
   font-size: 12px;
 }
 
-.footer-lang a:hover,
-.footer-links a:hover {
+.footer-lang a:hover, .footer-links a:hover {
   text-decoration: underline;
 }
 
@@ -190,7 +179,6 @@ body {
   padding-top: 12px;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .fb-meta-wrapper {
     flex-direction: column;
@@ -218,224 +206,3 @@ body {
     width: 80%;
   }
 }
-=======
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue",
-    Arial, sans-serif;
-  background: #f0f2f5;
-}
-
-.fb-meta-page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.fb-meta-wrapper {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 112px 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
-}
-
-/* Left side */
-.fb-meta-left {
-  flex: 1;
-  padding-right: 32px;
-  min-width: 280px;
-}
-
-.fb-meta-logo {
-  font-size: 56px;
-  font-weight: 700;
-  color: #1877f2;
-  letter-spacing: -0.5px;
-  margin-bottom: 16px;
-}
-
-.fb-meta-message {
-  font-size: 26px;
-  line-height: 32px;
-  color: #1c1e21;
-  max-width: 500px;
-}
-
-/* Right side – login card */
-.fb-meta-right {
-  flex: 0 0 396px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    0 8px 16px rgba(0, 0, 0, 0.1);
-  padding: 20px 20px 28px;
-}
-
-.fb-meta-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.fb-meta-form input {
-  width: 100%;
-  padding: 14px 16px;
-  font-size: 17px;
-  border: 1px solid #dddfe2;
-  border-radius: 6px;
-  outline: none;
-  transition: 0.2s;
-}
-
-.fb-meta-form input:focus {
-  border-color: #1877f2;
-  box-shadow: 0 0 0 2px #e7f3ff;
-}
-
-.fb-meta-form input.error {
-  border-color: #f02849;
-  background: #fff0f0;
-}
-
-.error-msg {
-  color: #f02849;
-  font-size: 12px;
-  margin-top: 2px;
-  margin-left: 4px;
-}
-
-.fb-meta-login-btn {
-  background: #1877f2;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin-top: 4px;
-}
-
-.fb-meta-login-btn:hover {
-  background: #166fe5;
-}
-
-.fb-meta-forgot {
-  text-align: center;
-  color: #1877f2;
-  font-size: 14px;
-  text-decoration: none;
-  font-weight: 500;
-  margin: 8px 0 4px;
-}
-
-.fb-meta-forgot:hover {
-  text-decoration: underline;
-}
-
-.fb-meta-divider {
-  border-bottom: 1px solid #dadde1;
-  margin: 16px 0;
-}
-
-.fb-meta-signup-btn {
-  background: #42b72a;
-  color: white;
-  font-size: 17px;
-  font-weight: bold;
-  padding: 12px;
-  width: 60%;
-  margin: 0 auto;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.fb-meta-signup-btn:hover {
-  background: #36a420;
-}
-
-/* Footer */
-.fb-meta-footer {
-  background: #fff;
-  padding: 32px 16px;
-}
-
-.footer-lang,
-.footer-links {
-  max-width: 980px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 20px;
-}
-
-.footer-lang a,
-.footer-links a {
-  color: #737373;
-  text-decoration: none;
-  font-size: 12px;
-}
-
-.footer-lang a:hover,
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
-.footer-divider {
-  max-width: 980px;
-  margin: 12px auto;
-  border-bottom: 1px solid #dddfe2;
-}
-
-.copyright {
-  max-width: 980px;
-  margin: 0 auto;
-  color: #737373;
-  font-size: 11px;
-  padding-top: 12px;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .fb-meta-wrapper {
-    flex-direction: column;
-    text-align: center;
-    padding: 80px 20px;
-  }
-  .fb-meta-left {
-    padding-right: 0;
-    margin-bottom: 40px;
-  }
-  .fb-meta-message {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .fb-meta-logo {
-    font-size: 42px;
-  }
-  .fb-meta-message {
-    font-size: 20px;
-    line-height: 28px;
-  }
-  .fb-meta-signup-btn {
-    width: 80%;
-  }
-}
->>>>>>> f31369040ad9401e6fcf99a8750fc76a2d4645e2
