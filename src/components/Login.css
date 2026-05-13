@@ -5,18 +5,19 @@
 }
 
 body {
+  background-color: #f0f2f5;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-  background: #f0f2f5;
 }
 
-.fb-meta-page {
+.fb-root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.fb-meta-wrapper {
+/* Main container */
+.fb-wrapper {
   max-width: 980px;
   margin: 0 auto;
   padding: 112px 0;
@@ -27,70 +28,79 @@ body {
   gap: 40px;
 }
 
-.fb-meta-left {
+/* Left side */
+.fb-left {
   flex: 1;
   padding-right: 32px;
   min-width: 280px;
 }
 
-.fb-meta-logo {
+.fb-logo {
+  font-family: inherit;
   font-size: 56px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -2px;
   color: #1877f2;
-  letter-spacing: -0.5px;
   margin-bottom: 16px;
 }
 
-.fb-meta-message {
-  font-size: 26px;
+.fb-tagline {
+  font-size: 28px;
   line-height: 32px;
   color: #1c1e21;
   max-width: 500px;
 }
 
-.fb-meta-right {
+/* Right side – login card */
+.fb-right {
   flex: 0 0 396px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
   padding: 20px 20px 28px;
 }
 
-.fb-meta-form {
+.fb-login-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.fb-meta-form input {
+.fb-login-form input {
   width: 100%;
   padding: 14px 16px;
   font-size: 17px;
   border: 1px solid #dddfe2;
   border-radius: 6px;
+  background: #fff;
   outline: none;
   transition: 0.2s;
 }
 
-.fb-meta-form input:focus {
+.fb-login-form input::placeholder {
+  color: #8d949e;
+  font-size: 17px;
+}
+
+.fb-login-form input:focus {
   border-color: #1877f2;
   box-shadow: 0 0 0 2px #e7f3ff;
 }
 
-.fb-meta-form input.error {
+.fb-login-form input.error {
   border-color: #f02849;
-  background: #fff0f0;
+  background: #fff8f8;
 }
 
-.error-msg {
+.error-text {
   color: #f02849;
   font-size: 12px;
-  margin-top: 2px;
+  margin-top: -6px;
   margin-left: 4px;
 }
 
-.fb-meta-login-btn {
-  background: #1877f2;
+.fb-login-button {
+  background-color: #1877f2;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -102,30 +112,50 @@ body {
   margin-top: 4px;
 }
 
-.fb-meta-login-btn:hover {
-  background: #166fe5;
+.fb-login-button:hover {
+  background-color: #166fe5;
 }
 
-.fb-meta-forgot {
-  text-align: center;
+.fb-login-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fb-forgot-password {
   color: #1877f2;
   font-size: 14px;
   text-decoration: none;
   font-weight: 500;
+  text-align: center;
   margin: 8px 0 4px;
+  display: inline-block;
 }
 
-.fb-meta-forgot:hover {
+.fb-forgot-password:hover {
   text-decoration: underline;
 }
 
-.fb-meta-divider {
+.fb-divider {
   border-bottom: 1px solid #dadde1;
   margin: 16px 0;
 }
 
-.fb-meta-signup-btn {
-  background: #42b72a;
+.fb-create-account {
+  background-color: #42b72a;
   color: white;
   font-size: 17px;
   font-weight: bold;
@@ -138,71 +168,148 @@ body {
   transition: background 0.2s;
 }
 
-.fb-meta-signup-btn:hover {
-  background: #36a420;
+.fb-create-account:hover {
+  background-color: #36a420;
 }
 
-.fb-meta-footer {
+/* "Create a Page" text below the card */
+.fb-create-page {
+  text-align: center;
+  font-size: 14px;
+  color: #1c1e21;
+  margin-top: 20px;
+}
+
+.fb-create-page a {
+  color: #1c1e21;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.fb-create-page a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.fb-footer {
   background: #fff;
   padding: 32px 16px;
 }
 
-.footer-lang, .footer-links {
+.footer-content {
   max-width: 980px;
   margin: 0 auto;
+}
+
+.footer-languages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 20px;
+  margin-bottom: 8px;
+}
+
+.footer-languages a, .footer-languages button {
+  color: #8a8d91;
+  text-decoration: none;
+  font-size: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.footer-languages a:hover, .footer-languages button:hover {
+  text-decoration: underline;
+}
+
+.lang-plus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: #f5f6f7;
+  border: 1px solid #dddfe2;
+  border-radius: 2px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #4b4f56;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.lang-plus:hover {
+  background-color: #ebedf0;
+  text-decoration: none !important;
+}
+
+.footer-line {
+  border-bottom: 1px solid #dddfe2;
+  margin: 12px 0;
+}
+
+.footer-links {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 20px;
+  margin-bottom: 16px;
 }
 
-.footer-lang a, .footer-links a {
-  color: #737373;
+.footer-links a {
+  color: #8a8d91;
   text-decoration: none;
   font-size: 12px;
 }
 
-.footer-lang a:hover, .footer-links a:hover {
+.footer-links a:hover {
   text-decoration: underline;
 }
 
-.footer-divider {
-  max-width: 980px;
-  margin: 12px auto;
-  border-bottom: 1px solid #dddfe2;
-}
-
-.copyright {
-  max-width: 980px;
-  margin: 0 auto;
-  color: #737373;
+.footer-copyright {
+  color: #8a8d91;
   font-size: 11px;
-  padding-top: 12px;
+  margin-top: 12px;
 }
 
+/* Responsive */
 @media (max-width: 900px) {
-  .fb-meta-wrapper {
+  .fb-wrapper {
     flex-direction: column;
     text-align: center;
     padding: 80px 20px;
+    gap: 40px;
   }
-  .fb-meta-left {
+  .fb-left {
     padding-right: 0;
-    margin-bottom: 40px;
+    margin-bottom: 0;
   }
-  .fb-meta-message {
+  .fb-tagline {
     max-width: 100%;
+  }
+  .fb-right {
+    width: 100%;
+    max-width: 396px;
+  }
+  .fb-create-account {
+    width: 80%;
   }
 }
 
 @media (max-width: 480px) {
-  .fb-meta-logo {
+  .fb-logo {
     font-size: 42px;
   }
-  .fb-meta-message {
-    font-size: 20px;
+  .fb-tagline {
+    font-size: 22px;
     line-height: 28px;
   }
-  .fb-meta-signup-btn {
-    width: 80%;
+  .fb-right {
+    padding: 16px;
+  }
+  .fb-create-account {
+    width: 100%;
+  }
+  .footer-languages, .footer-links {
+    justify-content: center;
   }
 }
